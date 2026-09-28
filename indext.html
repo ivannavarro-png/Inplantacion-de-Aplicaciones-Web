@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>NVRRO TECHNOLOGY</title>
+    
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f6f8;
+            color: #222;
+        }
+
+        header {
+            text-align: center;
+            background: #071a52;
+            color: white;
+            padding: 25px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        header p {
+            margin-bottom: 10px;
+        }
+
+        nav {
+            margin-top: 20px;
+        }
+
+        nav button {
+            background: transparent;
+            color: white;
+            border: none;
+            margin: 0 10px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        nav button:hover {
+            color: #4da6ff;
+        }
+
+        section {
+            margin: 30px auto;
+            max-width: 1100px;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #071a52;
+            margin-bottom: 25px;
+        }
+
+        .contenedor {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .tarjeta {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            width: 230px;
+            text-align: center;
+            box-shadow: 0 4px 10px #ccc;
+            transition: 0.3s;
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 7px 15px #aaa;
+        }
+
+        .tarjeta img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .tarjeta h3 {
+            color: #071a52;
+        }
+
+        .precio {
+            font-size: 20px;
+            font-weight: bold;
+            color: #007bff;
+            margin: 15px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .login,
+        .pago {
+            background-color: white;
+            padding: 30px;
+            width: 420px;
+            max-width: 90%;
+            margin: 50px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px #ccc;
+        }
+
+        .login h2,
+        .pago h2 {
+            text-align: center;
+        }
+
+        .login input,
+        .pago input {
+            width: 100%;
+            padding: 11px;
+            margin: 8px 0 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login button,
+        .pago button {
+            width: 100%;
+            margin-top: 5px;
+        }
+
+        .boton-cancelar {
+            background-color: #dc3545;
+        }
+
+        .boton-cancelar:hover {
+            background-color: #b02a37;
+        }
+
+        .resumen {
+            background-color: #eef3f8;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 7px;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #071a52;
+            color: white;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        #menu,
+        #pago {
+            display: none;
+        }
+
+        #productos,
+        #servicios {
+            display: none;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= LOGIN ================= -->
+
+    <div id="login">
+
+        <header>
+            <h1>NVRRO TECHNOLOGY</h1>
+        </header>
+
+
+        <div class="login">
+
+            <h2>Iniciar Sesión</h2>
+
+            <form id="loginForm">
+
+                <label>Correo electrónico:</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="usuario@correo.com"
+                    required
+                >
+
+                <label>Contraseña:</label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Contraseña"
+                    required
+                >
+
+                <button type="submit">
+                    Iniciar Sesión
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= MENU ================= -->
+
+    <div id="menu">
+
+        <header>
+
+            <h1>NVRRO TECHNOLOGY</h1>
+            
+            <nav>
+
+                <button onclick="mostrar('productos')">
+                    Productos
+                </button>
+
+                <button onclick="mostrar('servicios')">
+                    Servicios
+                </button>
+
+                <button onclick="cerrarSesion()">
+                    Cerrar sesión
+                </button>
+
+            </nav>
+
+        </header>
+
+
+
+        <!-- ================= PRODUCTOS ================= -->
+
+        <section id="productos">
+
+            <h2>Nuestros Productos</h2>
+
+            <div class="contenedor">
+
+
+                <!-- LAPTOP -->
+
+                <div class="tarjeta">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=500&q=80"
+                        alt="Laptop"
+                    >
+
+                    <h3>Laptop</h3>
+
+                    <p>
+                        Ideal para trabajo, estudios y entretenimiento.
+                    </p>
+
+                    <div class="precio">
+                        750€
+                    </div>
+
+                    <button onclick="comprar('Laptop', 750)">
+                        Comprar
+                    </button>
+
+                </div>
+
+
+
+                <!-- TELEFONO -->
+
+                <div class="tarjeta">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=500&q=80"
+                        alt="Teléfono"
+                    >
+
+                    <h3>Teléfono</h3>
+
+                    <p>
+                        Pantalla de alta resolución y gran batería.
+                    </p>
+
+                    <div class="precio">
+                        450€
+                    </div>
+
+                    <button onclick="comprar('Teléfono', 450)">
+                        Comprar
+                    </button>
+
+                </div>
+
+
+
+                <!-- AURICULARES -->
+
+                <div class="tarjeta">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=500&q=80"
+                        alt="Auriculares"
+                    >
+
+                    <h3>Auriculares</h3>
+
+                    <p>
+                        Sonido inalámbrico y micrófono integrado.
+                    </p>
+
+                    <div class="precio">
+                        45€
+                    </div>
+
+                    <button onclick="comprar('Auriculares', 45)">
+                        Comprar
+                    </button>
+
+                </div>
+
+
+
+                <!-- TECLADO -->
+
+                <div class="tarjeta">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=500&q=80"
+                        alt="Teclado"
+                    >
+
+                    <h3>Teclado USB</h3>
+
+                    <p>
+                        Teclado cómodo y ergonómico para PC.
+                    </p>
+
+                    <div class="precio">
+                        20€
+                    </div>
+
+                    <button onclick="comprar('Teclado USB', 20)">
+                        Comprar
+                    </button>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= SERVICIOS ================= -->
+
+        <section id="servicios">
+
+            <h2>Nuestros Servicios</h2>
+
+            <div class="contenedor">
+
+
+                <!-- SOPORTE -->
+
+                <div class="tarjeta">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=500&q=80"
+                        alt="Soporte técnico"
+                    >
+
+                    <h3>Soporte Técnico</h3>
+
+                    <p>
+                        Ayuda para resolver problemas informáticos.
+                    </p>
+
+                    <button onclick="solicitar('Soporte Técnico')">
+                        Solicitar
+                    </button>
+
+                </div>
+
+
+
+                <!-- CONSULTORIA -->
+
+                <div class="tarjeta">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=500&q=80"
+                        alt="Consultoría"
+                    >
+
+                    <h3>Consultoría Digital</h3>
+
+                    <p>
+                        Asesoramiento para mejorar tu negocio.
+                    </p>
+
+                    <button onclick="solicitar('Consultoría Digital')">
+                        Solicitar
+                    </button>
+
+                </div>
+
+
+
+                <!-- ENVIO -->
+
+                <div class="tarjeta">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=500&q=80"
+                        alt="Envío a domicilio"
+                    >
+
+                    <h3>Envío a Domicilio</h3>
+
+                    <p>
+                        Envíos rápidos y seguros.
+                    </p>
+
+                    <button onclick="solicitar('Envío a Domicilio')">
+                        Solicitar
+                    </button>
+
+                </div>
+
+
+
+                <!-- DISEÑO -->
+
+                <div class="tarjeta">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=500&q=80"
+                        alt="Diseño personalizado"
+                    >
+
+                    <h3>Diseño Personalizado</h3>
+
+                    <p>
+                        Diseñamos soluciones para tu empresa.
+                    </p>
+
+                    <button onclick="solicitar('Diseño Personalizado')">
+                        Solicitar
+                    </button>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <footer>
+
+            <p>
+                © 2026 NVRRO TECHNOLOGY
+            </p>
+
+            <p>
+                Tecnología · Servicios · Innovación
+            </p>
+
+        </footer>
+
+    </div>
+
+
+
+    <!-- ================= PANTALLA DE PAGO ================= -->
+
+    <div id="pago">
+
+        <header>
+
+            <h1>NVRRO TECHNOLOGY</h1>
+
+            <p>Finalizar compra</p>
+
+        </header>
+
+
+        <div class="pago">
+
+            <h2>Datos de pago y envío</h2>
+
+
+            <div class="resumen">
+
+                <strong>Producto:</strong>
+
+                <span id="productoPago"></span>
+
+                <br><br>
+
+                <strong>Precio:</strong>
+
+                <span id="precioPago"></span>€
+
+            </div>
+
+
+            <form id="pagoForm">
+
+                <h3>Dirección de envío</h3>
+
+                <label>Dirección:</label>
+
+                <input
+                    type="text"
+                    id="direccion"
+                    placeholder="Calle y número"
+                    required
+                >
+
+                <label>Ciudad:</label>
+
+                <input
+                    type="text"
+                    id="ciudad"
+                    placeholder="Madrid"
+                    required
+                >
+
+                <label>Código postal:</label>
+
+                <input
+                    type="text"
+                    id="codigoPostal"
+                    placeholder="28001"
+                    maxlength="5"
+                    required
+                >
+
+
+                <h3>Datos de pago</h3>
+
+                <label>Nombre del titular:</label>
+
+                <input
+                    type="text"
+                    id="titular"
+                    placeholder="Nombre y apellidos"
+                    required
+                >
+
+                <label>Número de tarjeta:</label>
+
+                <input
+                    type="text"
+                    id="tarjeta"
+                    placeholder="1234 5678 9012 3456"
+                    maxlength="19"
+                    required
+                >
+
+                <label>Fecha de caducidad:</label>
+
+                <input
+                    type="text"
+                    id="caducidad"
+                    placeholder="MM/AA"
+                    maxlength="5"
+                    required
+                >
+
+                <label>CVV:</label>
+
+                <input
+                    type="password"
+                    id="cvv"
+                    placeholder="123"
+                    maxlength="3"
+                    required
+                >
+
+
+                <button type="submit">
+                    Pagar
+                </button>
+
+                <button
+                    type="button"
+                    class="boton-cancelar"
+                    onclick="cancelarCompra()"
+                >
+                    Cancelar compra
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+
+        /* LOGIN */
+
+        document
+        .getElementById("loginForm")
+        .addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            const email =
+                document.getElementById("email").value;
+
+            const password =
+                document.getElementById("password").value;
+
+            if (email && password) {
+
+                document
+                .getElementById("login")
+                .style.display = "none";
+
+                document
+                .getElementById("menu")
+                .style.display = "block";
+
+                mostrar("productos");
+            }
+
+        });
+
+
+
+        /* MOSTRAR PRODUCTOS O SERVICIOS */
+
+        function mostrar(pagina) {
+
+            document
+            .getElementById("productos")
+            .style.display = "none";
+
+            document
+            .getElementById("servicios")
+            .style.display = "none";
+
+            document
+            .getElementById(pagina)
+            .style.display = "block";
+
+        }
+
+
+
+        /* COMPRAR */
+
+        function comprar(producto, precio) {
+
+            document
+            .getElementById("productoPago")
+            .textContent = producto;
+
+            document
+            .getElementById("precioPago")
+            .textContent = precio;
+
+            document
+            .getElementById("menu")
+            .style.display = "none";
+
+            document
+            .getElementById("pago")
+            .style.display = "block";
+
+        }
+
+
+
+        /* PAGAR */
+
+        document
+        .getElementById("pagoForm")
+        .addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            const direccion =
+                document.getElementById("direccion").value;
+
+            const ciudad =
+                document.getElementById("ciudad").value;
+
+            const codigoPostal =
+                document.getElementById("codigoPostal").value;
+
+            const titular =
+                document.getElementById("titular").value;
+
+            const tarjeta =
+                document.getElementById("tarjeta").value;
+
+            const caducidad =
+                document.getElementById("caducidad").value;
+
+            const cvv =
+                document.getElementById("cvv").value;
+
+
+            if (
+                direccion &&
+                ciudad &&
+                codigoPostal &&
+                titular &&
+                tarjeta &&
+                caducidad &&
+                cvv
+            ) {
+
+                alert(
+                    "¡Compra realizada correctamente!\n\n" +
+                    "Producto: " +
+                    document.getElementById("productoPago").textContent +
+                    "\nPrecio: " +
+                    document.getElementById("precioPago").textContent +
+                    "€\n\n" +
+                    "Dirección:\n" +
+                    direccion +
+                    ", " +
+                    ciudad +
+                    ", " +
+                    codigoPostal
+                );
+
+
+                document
+                .getElementById("pago")
+                .style.display = "none";
+
+                document
+                .getElementById("menu")
+                .style.display = "block";
+
+                mostrar("productos");
+
+                document
+                .getElementById("pagoForm")
+                .reset();
+
+            }
+
+        });
+
+
+
+        /* CANCELAR COMPRA */
+
+        function cancelarCompra() {
+
+            document
+            .getElementById("pago")
+            .style.display = "none";
+
+            document
+            .getElementById("menu")
+            .style.display = "block";
+
+            mostrar("productos");
+
+            document
+            .getElementById("pagoForm")
+            .reset();
+
+        }
+
+
+
+        /* SOLICITAR SERVICIO */
+
+        function solicitar(servicio) {
+
+            const confirmar = confirm(
+                "¿Quieres solicitar el servicio de " +
+                servicio +
+                "?"
+            );
+
+            if (confirmar) {
+
+                alert(
+                    "¡Servicio solicitado correctamente!\n\n" +
+                    "Servicio: " +
+                    servicio
+                );
+
+            }
+
+        }
+
+
+
+        /* CERRAR SESIÓN */
+
+        function cerrarSesion() {
+
+            document
+            .getElementById("menu")
+            .style.display = "none";
+
+            document
+            .getElementById("pago")
+            .style.display = "none";
+
+            document
+            .getElementById("login")
+            .style.display = "block";
+
+            document
+            .getElementById("email")
+            .value = "";
+
+            document
+            .getElementById("password")
+            .value = "";
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>
